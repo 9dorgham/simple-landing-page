@@ -1,0 +1,234 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+:root {
+    --line-pad: 3em;
+    --main-color: #10cab7;
+    --secondary-color: #2c4755;
+    --section-background: #f6f6f6;
+    font-family: 'Work Sans', sans-serif;
+}
+/* unordered list */
+ul {
+    list-style: none;
+}
+ul li {
+    display: inline-block;
+}
+
+/* link */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    font-size: clamp(12px, 17vw, 18px);
+    line-height: 1.6;
+    max-inline-size: 70ch;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17em, 1fr));
+    text-align: center;
+    gap: 2em;
+    padding: var(--line-pad);
+}
+
+i {
+    color: var(--main-color);
+}
+section {
+    text-align: center;
+    padding: var(--line-pad);
+}
+
+
+
+
+/* -- Header Start -- */
+header {
+    padding: 1em var(--line-pad);
+    position: relative;
+}
+#logo {
+    max-width: 4em;
+}
+header .bars {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+header .bars span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+header .bars span:nth-child(3) {
+    top: auto;
+    bottom: 0;
+}
+header .bars span:nth-child(2) {
+    width: 50%;
+    top: calc(50% - 1px);
+    transition: width 0.3s linear;
+}
+header .bars:hover span:nth-child(2) {
+    width: 100%;
+}
+
+header .right-side {
+    position: relative;
+}
+header ul {
+    display: none;
+    flex-direction: column;
+    background-color: var(--section-background);
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: 200px;
+    gap: 1em;
+    
+}
+header ul::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 0;
+    border: 10px solid transparent;
+    border-bottom-color: var(--section-background);
+}
+header ul li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s linear;
+    cursor: pointer;
+}
+header ul li:hover {
+    transform: translateX(10px);
+}
+header ul li:last-of-type {
+    border: none;
+}
+header .right-side:hover  ul {
+    display: flex;
+}
+/* -- Header End -- */
+
+
+/* -- Start Landing part */
+.land {
+    height: calc(100vh - 50px);
+    background-image: url(../images/landing.jpg);
+    background-size: cover;
+    text-align: center;
+}
+h1 {
+    color: var(--main-color);
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+h1 + p {
+    font-size: clamp(12px, 20vw, 20px);   
+}
+
+/* -- End Landing part */
+
+
+/* -- Start features -- */
+.features {
+    background-color: var(--section-background);
+}
+.features h3 {
+    margin-block: 1em;
+}
+/* -- End features -- */
+
+
+.services {
+    margin-top: var(--line-pad);
+}
+.services h2 {
+    font-size: 5em;
+    color: #eee;
+}
+.services .box .item:not(:last-child) {
+    display: flex;
+    gap: 10px;
+}
+.services .box p  {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+.services .box h3 { 
+    margin-bottom: 10px;
+}
+.services h2 + p {
+    margin: auto;
+    transform: translateY(-100%);
+}
+.services .box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    align-items: start;
+}
+
+.services .box .item:last-child {
+    grid-area: 1 / 3 / 3 / 4;
+    position: relative;
+}
+.services .box .item:last-child::after {
+    content: '';
+    width: 25%;
+    height: 120%;
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: -10%;
+    right: 0;
+    z-index: -1;
+}
+.services .box .item:last-child img {
+    width: 260px;
+}
+
+
+
+
+
+
+@media (max-width: 992px) {
+.services .box {
+    grid-template-columns: repeat(auto-fit, minmax(17em, 1fr));
+    }
+.services .box .item:last-child {
+    display: none;
+    }
+
+    .services .box .item:not(:last-child) {
+        display: block;
+    }
+}
